@@ -49,7 +49,6 @@ class DriverController extends Controller
         $new_driver->puskesmas()->associate($request->get('puskesmas'));
 
         $new_driver->save();
-
         return redirect()->route('driver.create')->with('status', 'Driver Berhasil dibuat.');
     }
 
