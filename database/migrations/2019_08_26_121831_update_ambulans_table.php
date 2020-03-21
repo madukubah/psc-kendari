@@ -14,8 +14,9 @@ class UpdateAmbulansTable extends Migration
     public function up()
     {
         //
+        return;
         Schema::table('ambulans', function (Blueprint $table) {
-            $table->integer("puskesmas_id")->unsigned()->unique();
+            $table->integer("puskesmas_id")->unsigned();
 
             $table->foreign("puskesmas_id")->references("id")->on("puskesmas");
         });

@@ -13,6 +13,7 @@ class CreatePuskesmasTable extends Migration
      */
     public function up()
     {
+        return;
         Schema::create('puskesmas', function (Blueprint $table) {
             $table->increments('id');
             $table->string("nama_puskesmas");

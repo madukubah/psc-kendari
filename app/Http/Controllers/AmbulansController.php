@@ -38,6 +38,12 @@ class AmbulansController extends Controller
     public function store(Request $request)
     {
         //
+        $validationConfig = [
+            'no_plat' => ['required',  'unique:ambulans'],
+            'telpon' => ['required'],
+        ];
+        $request->validate( $validationConfig );
+
         $new_ambulans = new \App\Ambulans();
 
         $new_ambulans->no_plat = $request->get('no_plat');
@@ -58,7 +64,8 @@ class AmbulansController extends Controller
      */
     public function show($id)
     {
-        //
+        $ambulans = \App\Ambulans::findOrFail($id);
+        return view('ambulans.show', ['ambulans' => $ambulans]);
     }
 
     /**
@@ -69,7 +76,8 @@ class AmbulansController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ambulans = \App\Ambulans::findOrFail($id);
+        return view('ambulans.edit', ['ambulans' => $ambulans]);
     }
 
     /**
@@ -82,6 +90,21 @@ class AmbulansController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validationConfig = [
+            'no_plat' => ['required'],
+            'telpon' => ['required'],
+        ];
+        $request->validate( $validationConfig );
+
+        $ambulans = \App\Ambulans::findOrFail($id);
+        
+        $ambulans->no_plat = $request->get('no_plat');
+        $ambulans->telpon = $request->get('telpon');
+        $ambulans->kelengkapan = $request->get('kelengkapan');
+
+        $ambulans->save();
+
+        return redirect()->route('ambulans.index')->with('status', 'Ambulans Berhasil dibuat.');
     }
 
     /**
@@ -93,6 +116,10 @@ class AmbulansController extends Controller
     public function destroy($id)
     {
         //
+        $ambulans = \App\Ambulans::findOrFail($id);
+        $ambulans->delete();
+        return redirect()->route('ambulans.index')->with('status', 'Ambulans Berhasil dihapus.');
+
     }
 
     public function ajaxSearch(Request $request){

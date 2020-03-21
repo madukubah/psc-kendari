@@ -35,7 +35,7 @@ CREATE TABLE `ambulans` (
   UNIQUE KEY `ambulans_no_plat_unique` (`no_plat`),
   UNIQUE KEY `ambulans_puskesmas_id_unique` (`puskesmas_id`),
   CONSTRAINT `ambulans_puskesmas_id_foreign` FOREIGN KEY (`puskesmas_id`) REFERENCES `puskesmas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `ambulans` (
 
 LOCK TABLES `ambulans` WRITE;
 /*!40000 ALTER TABLE `ambulans` DISABLE KEYS */;
-INSERT INTO `ambulans` VALUES (1,'DT 9040 E','08111111','Tensimeter dan stetoskop\r\n Themometer\r\n Pulse Oximetri\r\n Bed Site Monitor','2019-08-26 10:30:22','2019-08-26 10:30:22',NULL,1);
+INSERT INTO `ambulans` VALUES (1,'DT 9040 Ex','081111112','Tensimeter dan stetoskop\r\n Themometer\r\n Pulse Oximetri\r\n Bed Site Monitorr','2019-08-26 10:30:22','2020-03-21 09:48:12','2020-03-21 09:48:12',1);
 /*!40000 ALTER TABLE `ambulans` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `ambulans_kejadian` (
   KEY `ambulans_kejadian_ambulans_id_foreign` (`ambulans_id`),
   CONSTRAINT `ambulans_kejadian_ambulans_id_foreign` FOREIGN KEY (`ambulans_id`) REFERENCES `ambulans` (`id`),
   CONSTRAINT `ambulans_kejadian_kejadian_id_foreign` FOREIGN KEY (`kejadian_id`) REFERENCES `kejadian` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,6 @@ CREATE TABLE `ambulans_kejadian` (
 
 LOCK TABLES `ambulans_kejadian` WRITE;
 /*!40000 ALTER TABLE `ambulans_kejadian` DISABLE KEYS */;
-INSERT INTO `ambulans_kejadian` VALUES (1,NULL,1,NULL,NULL);
 /*!40000 ALTER TABLE `ambulans_kejadian` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +210,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +219,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_18_174811_update_table_users',2),(4,'2019_08_25_102638_create_table_rumkit',3),(5,'2019_08_25_104616_create_table_puskesmas',3),(6,'2019_08_25_105013_create_table_driver',3),(7,'2019_08_25_110044_create_table_driverpuskesmas',3),(8,'2019_08_25_112439_update_table_puskesmas',4),(9,'2019_08_25_112448_update_table_rumkit',4),(10,'2019_08_25_112456_update_table_driver',4),(11,'2019_08_25_115454_create_rumkit_table',5),(12,'2019_08_25_115507_create_puskesmas_table',5),(13,'2019_08_25_115521_create_driver_table',5),(14,'2019_08_25_115455_create_rumkit_table',6),(15,'2019_08_25_115508_create_puskesmas_table',6),(16,'2019_08_25_115522_create_driver_table',6),(17,'2019_08_25_120836_create_driverpuskesmas_table',6),(18,'2019_08_25_130257_create_ambulans_table',7),(19,'2019_08_25_131213_create_ambulanspuskesmas_table',8),(20,'2019_08_26_121816_update_driver_table',9),(21,'2019_08_26_121831_update_ambulans_table',9),(22,'2019_08_26_184315_create_kejadian_table',10),(23,'2019_08_26_194552_create_ambulans_kejadian_table',10),(24,'2019_08_26_194858_create_rumkit_kejadian_table',10),(25,'2019_08_26_194912_create_puskesmas_kejadian_table',10),(26,'2019_08_26_194942_create_driver_kejadian_table',10),(27,'2019_08_26_194553_create_ambulans_kejadian_table',11),(28,'2019_08_26_194859_create_rumkit_kejadian_table',11),(29,'2019_08_26_194913_create_puskesmas_kejadian_table',11),(30,'2019_08_26_194943_create_driver_kejadian_table',11),(31,'2019_08_26_221042_update_kejadian_table',12);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_18_174811_update_table_users',2),(4,'2019_08_25_102638_create_table_rumkit',3),(5,'2019_08_25_104616_create_table_puskesmas',3),(6,'2019_08_25_105013_create_table_driver',3),(7,'2019_08_25_110044_create_table_driverpuskesmas',3),(8,'2019_08_25_112439_update_table_puskesmas',4),(9,'2019_08_25_112448_update_table_rumkit',4),(10,'2019_08_25_112456_update_table_driver',4),(11,'2019_08_25_115454_create_rumkit_table',5),(12,'2019_08_25_115507_create_puskesmas_table',5),(13,'2019_08_25_115521_create_driver_table',5),(14,'2019_08_25_115455_create_rumkit_table',6),(15,'2019_08_25_115508_create_puskesmas_table',6),(16,'2019_08_25_115522_create_driver_table',6),(17,'2019_08_25_120836_create_driverpuskesmas_table',6),(18,'2019_08_25_130257_create_ambulans_table',7),(19,'2019_08_25_131213_create_ambulanspuskesmas_table',8),(20,'2019_08_26_121816_update_driver_table',9),(21,'2019_08_26_121831_update_ambulans_table',9),(22,'2019_08_26_184315_create_kejadian_table',10),(23,'2019_08_26_194552_create_ambulans_kejadian_table',10),(24,'2019_08_26_194858_create_rumkit_kejadian_table',10),(25,'2019_08_26_194912_create_puskesmas_kejadian_table',10),(26,'2019_08_26_194942_create_driver_kejadian_table',10),(27,'2019_08_26_194553_create_ambulans_kejadian_table',11),(28,'2019_08_26_194859_create_rumkit_kejadian_table',11),(29,'2019_08_26_194913_create_puskesmas_kejadian_table',11),(30,'2019_08_26_194943_create_driver_kejadian_table',11),(31,'2019_08_26_221042_update_kejadian_table',12),(32,'2019_08_26_221043_update_kejadian_table',13),(33,'2020_03_21_101912_update_rumkit_table',13),(34,'2020_03_21_131455_update_puskesmas_tabel',14);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,9 +264,11 @@ CREATE TABLE `puskesmas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `puskesmas_username_unique` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,7 +277,7 @@ CREATE TABLE `puskesmas` (
 
 LOCK TABLES `puskesmas` WRITE;
 /*!40000 ALTER TABLE `puskesmas` DISABLE KEYS */;
-INSERT INTO `puskesmas` VALUES (1,'Puskesmas Mata','Jl. Cemara No. 10, Kec. Kendari Sultra','(0401) 3126948','pus.mata','$2y$10$UolH7T7NAMCB1KW6qtfuNuTeB.YZM9PxH7JrMv2dlWms4qd2k3m3W','2019-08-25 07:08:56','2019-08-25 09:59:28',NULL),(2,'Puskesmas Kandai','Jl. Muh. Hatta, Kec. Kendari','-','pus.kandai','$2y$10$XqGbfqUQ/gvs1Dq7EGWf.uGu4YWgqjUw4WblCZnWbxttGlhGjkPD6','2019-08-25 08:36:45','2019-08-25 08:36:45',NULL),(4,'Puskesmas Benu-Benua','Jl. Bung Tomo No. 36, Kec. Kendari Barat','-','pus.benua','$2y$10$AA9SSRhA4Lm8gVki9P4VVeOFEkrDj3RjWxz5RkroKnX1DtgBqOOQS','2019-08-25 09:44:03','2019-08-25 09:44:03',NULL),(5,'Puskesmas Kemaraya','Jl. Mayjen S. Parman Kompleks Unhalu Lama, Kec. Kendari Barat','-','pus.kemaraya','$2y$10$Pk2httlFC8eESvCUwrWfgOTskO5DmctlumVd/so0dmfyPxyjBA9T2','2019-08-25 09:44:30','2019-08-25 09:44:30',NULL),(6,'Puskesmas Labibia','Jl. Imam Bonjol, Kec. Mandonga','-','pus.labibia','$2y$10$qA4w3dAf8zjJq6NDd8M6iO13xU/aCgIiVMlMPKCC2H7vZ4iJTsx7u','2019-08-25 09:44:59','2019-08-25 09:44:59',NULL),(7,'Puskesmas Puuwatu','Jl. Prof. M. Yamin No. 64, Kec. Puuwatu','081527695515','pus.puuwatu','$2y$10$MUn9rj7iZI8HKYd7dEJxnuyRIhS6SSAor2B1TCPid2B8iaQgqWv3a','2019-08-25 09:45:31','2019-08-25 09:45:31',NULL),(8,'Puskesmas Mekar','Jl. Laremba Lrg RCTI Kendari, Kec. Kadia','-','pus.mekar','$2y$10$4Df7BeF3auC78QgZTyVe9.WbsYeqrjTHHS8MUIZMuBZt08BViQW.K','2019-08-25 09:45:57','2019-08-25 09:45:57',NULL),(9,'Puskesmas Wua-Wua','Jl. Anawai, Kec. Wua-Wua','-','pus.wuawua','$2y$10$SutaW.qdjxu51a.zF/1EQ.2zt5JfI24kEF8Uxak7oSur3tbXdJHpq','2019-08-25 09:46:23','2019-08-25 09:46:23',NULL),(10,'Puskesmas Perumnas','Jl. Supu Yusuf, Kec. Kadia','(0401) 3412552','pus.perumnas','$2y$10$BdOP3YaIPnWTVxG2cNHUqOArPp17gzAg0Dydr1vUvAsvFABD7mkEC','2019-08-25 09:46:59','2019-08-25 09:46:59',NULL),(11,'Puskesmas Jati Raya','Jl. Sorumba, Kec. Kadia','-','pus.jatiraya','$2y$10$h6gD7VnNUrygwR4GBWMOeeizwRsBz3LScvZMZ6SR6ZcF5oQydlEEO','2019-08-25 09:47:21','2019-08-25 09:47:21',NULL),(12,'Puskesmas Lepo-Lepo','Jl. Christina M. Tiahahu No. 11, Kec. Baruga','(0401) 3195398','pus.lepo','$2y$10$O1Vcp5OQy3kFj/m7l9Qz0eBLPmxqAM..Fx88EnXI8ELlNTujJjYQu','2019-08-25 09:47:47','2019-08-25 09:47:47',NULL),(13,'Puskesmas Mokoau','Kompleks BTN Kendari Permai Blok F, Kec. Kambu','-','pus.mokoau','$2y$10$bgw8BLgzhMPycn4LV3ie1efEwBMs6FYqdhm16oQWMeyoFG/D2enwu','2019-08-25 09:48:08','2019-08-25 09:48:08',NULL),(14,'Puskesmas Poasia','Jl. Bunggasi, Kec. Poasia','(0401) 3913670','pus.poasia','$2y$10$XCTn1DoEKQ0iFDJ7QPOKaOBfCBt5qZ.vt20Y5XrOGaO6UD2AZsigC','2019-08-25 09:48:33','2019-08-25 09:48:33',NULL),(15,'Puskesmas Abeli','Jl. Sewangi No. 2, Kec. Abeli','-','pus.abeli','$2y$10$cETJ0cY0xjgF7u/aJDsii.WZwVUAc0pjgIeSIPZDf5R04Vo3WeLxq','2019-08-25 09:48:57','2019-08-25 09:48:57',NULL),(16,'Puskesmas Nambo','Jl. Garuda, Kec. Nambo','-','pus.nambo','$2y$10$NevRKeYeo6xSc7M0CRD/B.vzh.HCEPuTJ8E4dOq.Tar.RSX0COkhe','2019-08-25 09:49:15','2019-08-25 09:49:15',NULL);
+INSERT INTO `puskesmas` VALUES (1,'Puskesmas Mata','Jl. Cemara No. 10, Kec. Kendari Sultra','(0401) 3126948','pus.mata','$2y$10$UolH7T7NAMCB1KW6qtfuNuTeB.YZM9PxH7JrMv2dlWms4qd2k3m3W','2019-08-25 07:08:56','2019-08-25 09:59:28',NULL,NULL,NULL),(2,'Puskesmas Kandai','Jl. Muh. Hatta, Kec. Kendari','-','pus.kandai','$2y$10$XqGbfqUQ/gvs1Dq7EGWf.uGu4YWgqjUw4WblCZnWbxttGlhGjkPD6','2019-08-25 08:36:45','2019-08-25 08:36:45',NULL,NULL,NULL),(4,'Puskesmas Benu-Benua','Jl. Bung Tomo No. 36, Kec. Kendari Barat','-','pus.benua','$2y$10$AA9SSRhA4Lm8gVki9P4VVeOFEkrDj3RjWxz5RkroKnX1DtgBqOOQS','2019-08-25 09:44:03','2019-08-25 09:44:03',NULL,NULL,NULL),(5,'Puskesmas Kemaraya','Jl. Mayjen S. Parman Kompleks Unhalu Lama, Kec. Kendari Barat','-','pus.kemaraya','$2y$10$Pk2httlFC8eESvCUwrWfgOTskO5DmctlumVd/so0dmfyPxyjBA9T2','2019-08-25 09:44:30','2019-08-25 09:44:30',NULL,NULL,NULL),(6,'Puskesmas Labibia','Jl. Imam Bonjol, Kec. Mandonga','-','pus.labibia','$2y$10$qA4w3dAf8zjJq6NDd8M6iO13xU/aCgIiVMlMPKCC2H7vZ4iJTsx7u','2019-08-25 09:44:59','2019-08-25 09:44:59',NULL,NULL,NULL),(7,'Puskesmas Puuwatu','Jl. Prof. M. Yamin No. 64, Kec. Puuwatu','081527695515','pus.puuwatu','$2y$10$MUn9rj7iZI8HKYd7dEJxnuyRIhS6SSAor2B1TCPid2B8iaQgqWv3a','2019-08-25 09:45:31','2019-08-25 09:45:31',NULL,NULL,NULL),(8,'Puskesmas Mekar','Jl. Laremba Lrg RCTI Kendari, Kec. Kadia','-','pus.mekar','$2y$10$4Df7BeF3auC78QgZTyVe9.WbsYeqrjTHHS8MUIZMuBZt08BViQW.K','2019-08-25 09:45:57','2019-08-25 09:45:57',NULL,NULL,NULL),(9,'Puskesmas Wua-Wua','Jl. Anawai, Kec. Wua-Wua','-','pus.wuawua','$2y$10$SutaW.qdjxu51a.zF/1EQ.2zt5JfI24kEF8Uxak7oSur3tbXdJHpq','2019-08-25 09:46:23','2019-08-25 09:46:23',NULL,NULL,NULL),(10,'Puskesmas Perumnas','Jl. Supu Yusuf, Kec. Kadia','(0401) 3412552','pus.perumnas','$2y$10$BdOP3YaIPnWTVxG2cNHUqOArPp17gzAg0Dydr1vUvAsvFABD7mkEC','2019-08-25 09:46:59','2019-08-25 09:46:59',NULL,NULL,NULL),(11,'Puskesmas Jati Raya','Jl. Sorumba, Kec. Kadia','-','pus.jatiraya','$2y$10$h6gD7VnNUrygwR4GBWMOeeizwRsBz3LScvZMZ6SR6ZcF5oQydlEEO','2019-08-25 09:47:21','2019-08-25 09:47:21',NULL,NULL,NULL),(12,'Puskesmas Lepo-Lepo','Jl. Christina M. Tiahahu No. 11, Kec. Baruga','(0401) 3195398','pus.lepo','$2y$10$O1Vcp5OQy3kFj/m7l9Qz0eBLPmxqAM..Fx88EnXI8ELlNTujJjYQu','2019-08-25 09:47:47','2019-08-25 09:47:47',NULL,NULL,NULL),(13,'Puskesmas Mokoau','Kompleks BTN Kendari Permai Blok F, Kec. Kambu','-','pus.mokoau','$2y$10$bgw8BLgzhMPycn4LV3ie1efEwBMs6FYqdhm16oQWMeyoFG/D2enwu','2019-08-25 09:48:08','2019-08-25 09:48:08',NULL,NULL,NULL),(14,'Puskesmas Poasia','Jl. Bunggasi, Kec. Poasia','(0401) 3913670','pus.poasia','$2y$10$XCTn1DoEKQ0iFDJ7QPOKaOBfCBt5qZ.vt20Y5XrOGaO6UD2AZsigC','2019-08-25 09:48:33','2019-08-25 09:48:33',NULL,NULL,NULL),(15,'Puskesmas Abeli','Jl. Sewangi No. 2, Kec. Abeli','-','pus.abeli','$2y$10$cETJ0cY0xjgF7u/aJDsii.WZwVUAc0pjgIeSIPZDf5R04Vo3WeLxq','2019-08-25 09:48:57','2019-08-25 09:48:57',NULL,NULL,NULL),(16,'Puskesmas Nambo','Jl. Garuda, Kec. Nambo','-','pus.nambo','$2y$10$NevRKeYeo6xSc7M0CRD/B.vzh.HCEPuTJ8E4dOq.Tar.RSX0COkhe','2019-08-25 09:49:15','2019-08-25 09:49:15',NULL,NULL,NULL),(17,'tes','Ruko Bypass Square Blok B No. 11, Jl, Jl. Brigjen M. Joendes, Bende, Kec. Kadia, Kota Kendari, Sulawesi Tenggara 93461, Indonesia','432123','fachmi.maasy@technoindo.com','$2y$10$v59tbKA7D/yBtVM8xb/Vt.wZusLQ9PsLdX2zy/zegEpfdcXw2SUKi','2020-03-21 05:26:08','2020-03-21 05:37:22','2020-03-21 05:37:22',-3.984092049125109,122.52074500531005),(20,'tes','Jl. Laode Hadi No.8, Korumba, Kec. Mandonga, Kota Kendari, Sulawesi Tenggara 93461, Indonesia','123443','fachmi.maasy@gmail.com','$2y$10$zKj3XO70Aymoan9fyLUeDuVhwIVbYKoXnPfwN1l1QHHDqc0SstwpK','2020-03-21 05:52:24','2020-03-21 05:52:32','2020-03-21 05:52:32',-3.976621385068666,122.52424260586547);
 /*!40000 ALTER TABLE `puskesmas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,10 +339,12 @@ CREATE TABLE `rumkit` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rumkit_kode_rs_unique` (`kode_rs`),
   UNIQUE KEY `rumkit_username_unique` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,7 +353,7 @@ CREATE TABLE `rumkit` (
 
 LOCK TABLES `rumkit` WRITE;
 /*!40000 ALTER TABLE `rumkit` DISABLE KEYS */;
-INSERT INTO `rumkit` VALUES (1,'RSUKK','RSU Kota Kendari','Jl. Z.A. Sugianto No. 39, Kec. Kambu','(0401) 3359171','rsukk','$2y$10$lCkt6upWswbpz1ABNr52KOS.uzXIBK9AZ1PTD8.AzYWQyNbD1dxQe',0,0,0,0,1,1,1,0,0,0,NULL,'2019-08-26 01:06:00','2019-08-26 01:45:09'),(2,'RSUDB','RSUD Bahteramas','Jl. Kapten Piere Tendean No. 50, Kec. Baruga','(0401) 3195611','rsudb','$2y$10$Sngf0CNiRQCyPwYZUPLmyeGZb3Uh2p9CTStuVfZ44mIOWcQqA4JY2',0,0,0,0,1,1,1,0,0,0,NULL,'2019-08-26 01:52:05','2019-08-26 01:52:05');
+INSERT INTO `rumkit` VALUES (1,'RSUKK','RSU Kota Kendari','Jl. Buburanda, Kambu, Kec. Kambu, Kota Kendari, Sulawesi Tenggara 93231, Indonesia','(0401) 3359171','rsukk','$2y$10$lCkt6upWswbpz1ABNr52KOS.uzXIBK9AZ1PTD8.AzYWQyNbD1dxQe',0,0,0,0,1,1,1,0,0,0,NULL,'2019-08-26 01:06:00','2020-03-21 04:52:28',-3.988719427800054,122.53429135935107),(2,'RSUDB','RSUD Bahteramas','Jl. Poros Bandara Haluoleo, Baruga, Kota Kendari, Sulawesi Tenggara 93116, Indonesia','(0401) 3195611','rsudb','$2y$10$Sngf0CNiRQCyPwYZUPLmyeGZb3Uh2p9CTStuVfZ44mIOWcQqA4JY2',0,0,0,0,1,1,1,0,0,0,NULL,'2019-08-26 01:52:05','2020-03-21 04:54:16',-4.034796582421225,122.49133015854773),(3,'1234','asdf','Jl. Laode Hadi, Bende, Kec. Kadia, Kota Kendari, Sulawesi Tenggara 93561, Indonesia','4321','fachmi.maasy@technoindo.com','$2y$10$W7b6Hh8A8CCpDY4qecZsL.DTRn2404oIxMjFuuJ3NZ5jxKfAG/d1O',0,0,2,0,0,0,0,0,0,0,'2020-03-21 03:25:18','2020-03-21 02:37:03','2020-03-21 03:25:18',-3.9858866079096944,122.51982761383059);
 /*!40000 ALTER TABLE `rumkit` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +421,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Site Administrator','fachmi.maasy@technoindo.com',NULL,'$2y$10$NdbIjTbZ5L9zBpE2ngqv..dNKQ/S4RDQeyUxKnV1tFof.kWUIG48O','2hO910ubykHadPQirXwMrMLBRC72IRTVfQdW5m6vDRjhcotdASqjuN3ftzNy','2019-08-18 10:19:01','2019-08-18 10:19:01','administrator','[\"ADMIN\"]','Kota Kendari, Sulawesi Tenggara','082349452345','avatar.png','ACTIVE'),(2,'Dr. Rahminingrum','dr.rahminingrum@gmail.com',NULL,'$2y$10$zbkF6FKVDogPdisbl7ec/.HUbWBYN05IIZKLahGkTCNN7rvD9s9tS',NULL,'2019-08-24 07:38:59','2019-08-24 10:55:39','dr.rahminingrum','[\"STAFF\"]','Kendari Sao-sao','0811999999','avatars/s0TxTzeUs3BlobrTuWkbhkmnXk7zqqDArz2esMKB.png','ACTIVE'),(4,'User Demo','user.demo@gmail.com',NULL,'$2y$10$gzwJnqVcBKt59J2T3wlTWeC5aLtg6D/feTvzHno6ZdfknSxUAAO0C',NULL,'2019-08-25 00:55:54','2019-08-25 00:56:09','user.demo','[\"OPERATOR\"]','Kendari','0811111111','avatars/0yNLDMYRsNAxZlMsi8YG6kq0n1TUiWsppuCtbGou.png','INACTIVE'),(5,'Arpan Tombili','arpan.tombili@mail.com',NULL,'$2y$10$wi.9fQE5qP1.aQJRCOgJTe3R6R.Do//0F.7SfHJWhzqJ6ycXRzHVy',NULL,'2019-08-25 01:04:54','2019-08-25 01:05:07','arpan.tombili','[\"STAFF\"]','Kendari','08999977','avatars/FK2PqbAEoHUKFdzNfDiLjNit00Vkhw5UzQfYf6Y1.png','INACTIVE'),(6,'Dian Saputra','qoraolivera@gmail.com',NULL,'$2y$10$Tq6dz1V0TEYT8vo4xCHRn.tvwZ0ZKsNR0c5MR5cb49oz7HjyvmhIG',NULL,'2019-08-27 04:51:01','2019-08-27 04:51:01','dian.saputra','[\"OPERATOR\"]','Kendari','081341808045','avatars/kJOnM348oiiQmJcLyuE7z2GLFnjIhuo2EaRJ5Osx.png','ACTIVE');
+INSERT INTO `users` VALUES (1,'Site Administrator','fachmi.maasy@technoindo.com',NULL,'$2y$10$NdbIjTbZ5L9zBpE2ngqv..dNKQ/S4RDQeyUxKnV1tFof.kWUIG48O','JqHNY5aDbUhhO3URsy5JdL2fGzPbZFL1ASYUwwVDZhtKaImn1XxUUGWuwVED','2019-08-18 10:19:01','2019-08-18 10:19:01','administrator','[\"ADMIN\"]','Kota Kendari, Sulawesi Tenggara','082349452345','avatar.png','ACTIVE'),(2,'Dr. Rahminingrum','dr.rahminingrum@gmail.com',NULL,'$2y$10$zbkF6FKVDogPdisbl7ec/.HUbWBYN05IIZKLahGkTCNN7rvD9s9tS',NULL,'2019-08-24 07:38:59','2019-08-24 10:55:39','dr.rahminingrum','[\"STAFF\"]','Kendari Sao-sao','0811999999','avatars/s0TxTzeUs3BlobrTuWkbhkmnXk7zqqDArz2esMKB.png','ACTIVE'),(4,'User Demo','user.demo@gmail.com',NULL,'$2y$10$gzwJnqVcBKt59J2T3wlTWeC5aLtg6D/feTvzHno6ZdfknSxUAAO0C',NULL,'2019-08-25 00:55:54','2019-08-25 00:56:09','user.demo','[\"OPERATOR\"]','Kendari','0811111111','avatars/0yNLDMYRsNAxZlMsi8YG6kq0n1TUiWsppuCtbGou.png','INACTIVE'),(5,'Arpan Tombili','arpan.tombili@mail.com',NULL,'$2y$10$wi.9fQE5qP1.aQJRCOgJTe3R6R.Do//0F.7SfHJWhzqJ6ycXRzHVy',NULL,'2019-08-25 01:04:54','2019-08-25 01:05:07','arpan.tombili','[\"STAFF\"]','Kendari','08999977','avatars/FK2PqbAEoHUKFdzNfDiLjNit00Vkhw5UzQfYf6Y1.png','INACTIVE'),(6,'Dian Saputra','qoraolivera@gmail.com',NULL,'$2y$10$Tq6dz1V0TEYT8vo4xCHRn.tvwZ0ZKsNR0c5MR5cb49oz7HjyvmhIG',NULL,'2019-08-27 04:51:01','2019-08-27 04:51:01','dian.saputra','[\"OPERATOR\"]','Kendari','081341808045','avatars/kJOnM348oiiQmJcLyuE7z2GLFnjIhuo2EaRJ5Osx.png','ACTIVE');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -431,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-17 21:10:29
+-- Dump completed on 2020-03-21 18:47:58

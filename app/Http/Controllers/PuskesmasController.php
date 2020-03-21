@@ -14,7 +14,7 @@ class PuskesmasController extends Controller
     public function index(Request $request)
     {
         //
-        $puskesmas = \App\Puskesmas::paginate(10);
+        $puskesmas = \App\Puskesmas::orderBy('id', 'desc')->paginate(10);
         $filterKeyword = $request->get('keyword');
         if($filterKeyword){
             $puskesmas = \App\Puskesmas::where('nama_puskesmas', 'LIKE', "%$filterKeyword%")->paginate(10);
@@ -41,6 +41,11 @@ class PuskesmasController extends Controller
      */
     public function store(Request $request)
     {
+        $validationConfig = [
+            'nama_puskesmas' => ['required'],
+            'username' => ['required', 'string','max:255', 'unique:puskesmas'],
+        ];
+        $request->validate( $validationConfig );
         //
         $new_puskesmas = new \App\Puskesmas;
 
@@ -49,7 +54,9 @@ class PuskesmasController extends Controller
         $new_puskesmas->telpon = $request->get('telpon');
         $new_puskesmas->username = $request->get('username');
         $new_puskesmas->password = \Hash::make($request->get('password'));
-
+        $latlong = explode( ';', $request->get('latlong') );
+        $new_puskesmas->latitude = $latlong[0];
+        $new_puskesmas->longitude = $latlong[1];
         $new_puskesmas->save();
 
         return redirect()->route('puskesmas.create')->with('status', 'Puskesmas Berhasil dibuat.');
@@ -91,11 +98,19 @@ class PuskesmasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validationConfig = [
+            'nama_puskesmas' => ['required'],
+        ];
+        $request->validate( $validationConfig );
+
         $puskesmas = \App\Puskesmas::findOrFail($id);
 
         $puskesmas->nama_puskesmas = $request->get('nama_puskesmas');
         $puskesmas->telpon = $request->get('telpon');
         $puskesmas->alamat = $request->get('alamat');
+        $latlong = explode( ';', $request->get('latlong') );
+        $puskesmas->latitude = $latlong[0];
+        $puskesmas->longitude = $latlong[1];
 
         $puskesmas->save();
 

@@ -13,6 +13,7 @@ class CreateKejadianTable extends Migration
      */
     public function up()
     {
+        return;
         Schema::create('kejadian', function (Blueprint $table) {
             $table->increments('id');
             $table->string('no_kejadian')->unique();

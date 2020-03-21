@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class UpdatePuskesmasTabel extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class CreatePasswordResetsTable extends Migration
     public function up()
     {
         return;
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+
+        Schema::table('puskesmas', function (Blueprint $table) {
+            $table->double("latitude")->nullable();
+            $table->double("longitude")->nullable();
         });
     }
 
@@ -28,6 +28,8 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::table('puskesmas', function (Blueprint $table) {
+            //
+        });
     }
 }

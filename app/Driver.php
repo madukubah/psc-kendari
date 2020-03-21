@@ -17,7 +17,7 @@ class Driver extends Model
     }
 
     public function kejadian(){
-        return $this->hasOne('App\Kejadian');
+        return $this->hasMany('App\Kejadian');
     }
 
 }

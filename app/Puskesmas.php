@@ -15,14 +15,14 @@ class Puskesmas extends Model
     // }
 
     public function driver(){
-        return $this->hasOne("App\Driver");
+        return $this->hasMany("App\Driver");
       }
 
       public function ambulans(){
-        return $this->hasOne("App\Ambulans");
+        return $this->hasMany("App\Ambulans");
       }
 
       public function kejadian(){
-        return $this->hasOne('App\Kejadian');
+        return $this->hasMany('App\Kejadian');
     }
 }

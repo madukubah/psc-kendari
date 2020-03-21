@@ -5,18 +5,41 @@
 @section("content")
 <style>
     #map {
-        height: 600px;  /* The height is 400 pixels */
+        height: 500px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
     }
 </style>
 <script>
     function initMap() {
         var location = {lat: -3.981716, lng: 122.518213};
+        var marker = new google.maps.Marker({position: location});
+        var geocoder = new google.maps.Geocoder;
+
+
         var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 20, center: location});
-        var marker = new google.maps.Marker({position: location, map: map});
+            document.getElementById('map'), {zoom: 15, center: location});
         new google.maps.event.addListener(map, 'click', function( event ){
-            alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() ); 
+            marker.setMap(null);
+
+            location = {lat: event.latLng.lat(), lng:  event.latLng.lng() };
+            marker = new google.maps.Marker({position: location});
+            marker.setMap(map);
+            document.getElementById('latlong').value = ""+event.latLng.lat() + ";" + event.latLng.lng();
+
+            geocoder.geocode({'location': location}, function(results, status) {
+                console.log( results );
+                if (status === 'OK') {
+                    if (results[0]) {
+                        document.getElementById('alamat').innerHTML = results[0].formatted_address;
+                    } else {
+                    window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+
+
         });
     }
 </script>
@@ -34,10 +57,20 @@
                 <div class="col-md-6">
                     <label for="kode_rs">Kode RS</label>
                     <input class="form-control" placeholder="RSXXX" type="text" name="kode_rs" id="kode_rs" />
+                    @error('kode_rs')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <br>
 
                     <label for="nama_rs">Nama RS</label>
                     <input class="form-control" placeholder="Rumah Sakit Xxxxx" type="text" name="nama_rs" id="nama_rs" />
+                    @error('nama_rs')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <br>
 
                     <label for="telpon">No. Telp</label>
@@ -47,11 +80,17 @@
                     <label for="alamat">Alamat</label><br>
                     <button data-toggle="modal" data-target="#gmap" type="button" class="btn btn-default btn-xs">Ambil Alamat</button>
 
+                    <input class="form-control" placeholder="latlong" type="hidden" name="latlong" id="latlong" value="-3.981716;122.518213" />
                     <textarea name="alamat" id="alamat" class="form-control"></textarea>
                     <br>
 
                     <label for="username">Username</label>
                     <input class="form-control" placeholder="Username" type="text" name="username" id="username" />
+                    @error('username')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <br>
 
                     <label for="password">Kata Sandi</label>

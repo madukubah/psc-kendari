@@ -14,6 +14,7 @@ class UpdateTableUsers extends Migration
     public function up()
     {
         //
+        return;
 	Schema::table('users', function (Blueprint $table) {
             $table->string("username")->unique();
             $table->string("roles");

@@ -13,6 +13,7 @@ class CreateAmbulansTable extends Migration
      */
     public function up()
     {
+        return;
         Schema::create('ambulans', function (Blueprint $table) {
             $table->increments('id');
             $table->string("no_plat")->unique();

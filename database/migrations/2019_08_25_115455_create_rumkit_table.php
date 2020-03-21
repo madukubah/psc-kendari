@@ -13,6 +13,7 @@ class CreateRumkitTable extends Migration
      */
     public function up()
     {
+        return;
         Schema::create('rumkit', function (Blueprint $table) {
             $table->increments('id');
             $table->string("kode_rs")->unique();

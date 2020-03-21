@@ -12,6 +12,6 @@ class Rumkit extends Model
     use SoftDeletes;
 
     public function kejadian(){
-        return $this->hasOne('App\Kejadian');
+        return $this->hasMany('App\Kejadian');
     }
 }

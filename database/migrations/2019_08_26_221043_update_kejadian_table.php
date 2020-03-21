@@ -14,11 +14,12 @@ class UpdateKejadianTable extends Migration
     public function up()
     {
         //
+        return;
         Schema::table('kejadian', function (Blueprint $table) {
-            $table->integer("puskesmas_id")->unsigned()->nullable();
-            $table->integer("rumkit_id")->unsigned()->nullable();
-            $table->integer("ambulans_id")->unsigned();
-            $table->integer("driver_id")->unsigned();
+            // $table->integer("puskesmas_id")->unsigned()->nullable();
+            // $table->integer("rumkit_id")->unsigned()->nullable();
+            // $table->integer("ambulans_id")->unsigned();
+            // $table->integer("driver_id")->unsigned();
 
             $table->foreign("puskesmas_id")->references("id")->on("puskesmas");
             $table->foreign("rumkit_id")->references("id")->on("rumkit");

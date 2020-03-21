@@ -41,6 +41,12 @@ class RumkitController extends Controller
      */
     public function store(Request $request)
     {
+        $validationConfig = [
+            'username' => ['required', 'string','max:255', 'unique:rumkit'],
+            'kode_rs' => ['required', 'string','max:255', 'unique:rumkit'],
+            'nama_rs' => ['required'],
+        ];
+        $request->validate( $validationConfig );
         //
         $new_rumkit = new \App\Rumkit;
 
@@ -60,9 +66,12 @@ class RumkitController extends Controller
         $new_rumkit->iccu = $request->get('iccu');
         $new_rumkit->picu = $request->get('picu');
         $new_rumkit->nicu = $request->get('nicu');
-
-
+        $latlong = explode( ';', $request->get('latlong') );
+        $new_rumkit->latitude = $latlong[0];
+        $new_rumkit->longitude = $latlong[1];
         $new_rumkit->save();
+        // dd($new_rumkit);die;
+
 
         return redirect()->route('rumkit.create')->with('status', 'Rumah Sakit Berhasil dibuat.');
     }
@@ -102,6 +111,10 @@ class RumkitController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validationConfig = [
+            'nama_rs' => ['required'],
+        ];
+        $request->validate( $validationConfig );
         //
         $rumkit = \App\Rumkit::findOrFail($id);
 
@@ -118,6 +131,9 @@ class RumkitController extends Controller
         $rumkit->iccu = $request->get('iccu');
         $rumkit->nicu = $request->get('nicu');
         $rumkit->picu = $request->get('picu');
+        $latlong = explode( ';', $request->get('latlong') );
+        $rumkit->latitude = $latlong[0];
+        $rumkit->longitude = $latlong[1];
 
         $rumkit->save();
 

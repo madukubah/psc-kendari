@@ -14,6 +14,7 @@ class UpdateDriverTable extends Migration
     public function up()
     {
         //
+        return;
         Schema::table('driver', function (Blueprint $table) {
             $table->integer("puskesmas_id")->unsigned()->unique();
 
