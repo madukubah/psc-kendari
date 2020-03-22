@@ -48,12 +48,12 @@
                                         <td>{{$kejadians->triage}}</td>
                                         <td>
                                         <div class="btn-group" style="width: 180px;">
-                                        <a class="btn btn-info btn-sm disabled" href="{{route('kejadian.show',['id'=>$kejadians->id])}}" >Detail</a>
-                                        <a class="btn btn-primary btn-sm disabled" href="{{route('kejadian.edit',['id'=>$kejadians->id])}}">Ubah</a>
-                                        <form onsubmit="return confirm('Anda yakin hapus Kejadian ini?')" action="{{route('driver.destroy', ['id' => $kejadians->id ])}}" method="POST">
+                                        <a class="btn btn-info btn-sm " href="{{route('kejadian.show',['id'=>$kejadians->id])}}" >Detail</a>
+                                        <a class="btn btn-primary btn-sm " href="{{route('kejadian.edit',['id'=>$kejadians->id])}}">Ubah</a>
+                                        <form onsubmit="return confirm('Anda yakin hapus Kejadian ini?')" action="{{route('kejadian.destroy', ['id' => $kejadians->id ])}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <input type="submit" value="Hapus" class="btn btn-danger btn-sm disabled">
+                                            <input type="submit" value="Hapus" class="btn btn-danger btn-sm ">
                                         </form>
                                         </div>
                                         </td>

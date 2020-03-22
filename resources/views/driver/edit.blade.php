@@ -5,7 +5,7 @@
 @section("content")
 
 <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
 <div class="box box-success">
     <div class="box-header with-border"><h3 class="box-title">Ubah Driver</h3></div>
         <div class="box-body">
@@ -17,32 +17,44 @@
                     <input type="hidden" value="PUT" name="_method">
 
                     <label for="puskesmas">Tempat Bertugas</label><br>
-                    <select name="puskesmas" id="puskesmas" class="form-control"></select><br><br/>
+                    <select name="puskesmas" id="puskesmas" class="form-control"></select>
+                    @error('puskesmas')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <br>
 
-                      <label for="nama_driver">Nama Driver</label>
-                      <input value="{{$driver->nama_driver}}" class="form-control" placeholder="Nama Lengkap" type="text" name="nama_driver" id="nama_driver"/><br>
+                    <label for="nama_driver">Nama Driver</label>
+                    <input value="{{$driver->nama_driver}}" class="form-control" placeholder="Nama Lengkap" type="text" name="nama_driver" id="nama_driver"/>
+                    @error('nama_driver')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <br>
 
-                      <label for="telpon">No. Telp</label>
-                      <input value="{{$driver->telpon}}" class="form-control" placeholder="08xxxxxx" type="text" name="telpon" id="telpon"/><br>
+                    <label for="telpon">No. Telp</label>
+                    <input value="{{$driver->telpon}}" class="form-control" placeholder="08xxxxxx" type="text" name="telpon" id="telpon"/><br>
 
-                      <label for="alamat">Alamat</label>
-                      <textarea name="alamat" id="alamat" class="form-control">{{$driver->alamat}}</textarea><br>
+                    <label for="alamat">Alamat</label>
+                    <textarea name="alamat" id="alamat" class="form-control">{{$driver->alamat}}</textarea><br>
 
-                      <label for="username">Username</label>
-                      <input value="{{$driver->username}}" class="form-control" placeholder="Username" type="text" name="username" id="username"/>
-                      <br>
+                    <label for="username">Username</label>
+                    <input value="{{$driver->username}}" class="form-control" placeholder="Username" type="text" name="username" id="username"/>
+                    <br>
 
-                      <label for="password">Kata Sandi</label>
-                      <input value="{{$driver->password}}" class="form-control" placeholder="password" type="password" name="password" id="password"/>
-                      <br>
+                    <label for="password">Kata Sandi</label>
+                    <input value="" class="form-control" placeholder="password" type="password" name="password" id="password"/>
+                    <br>
 
-                      <label for="email">Email</label>
-                      <input value="{{$driver->email}}" class="form-control" placeholder="user@mail.com" type="text" name="email" id="email"/>
-                      <br>
+                    <label for="email">Email</label>
+                    <input value="{{$driver->email}}" class="form-control" placeholder="user@mail.com" type="text" name="email" id="email"/>
+                    <br>
 
-                        <div class="row">
-                        <div class="col-xs-1">
-                        <button type="submit" class="btn btn-success btn-sm">Simpan</button><br></div></div>
+                    <div class="row">
+                    <div class="col-xs-1">
+                    <button type="submit" class="btn btn-success btn-sm">Simpan</button><br></div></div>
                 </form>
             </div>
         </div>
@@ -65,7 +77,9 @@
 <script>
     $('#puskesmas').select2({
         ajax: {
-            url: 'https://psckendari.systems/ajax/puskesmas/search',processResults: function(data){
+            // url: 'https://psckendari.systems/ajax/puskesmas/search',
+            url: '{{url("ajax/puskesmas/search")}}',
+            processResults: function(data){
                 return {
                     results: data.map(function(item){return {id: item.id, text:item.nama_puskesmas} })
                 }
@@ -75,9 +89,9 @@
 
     var puskesmas = {!! $driver->puskesmas !!}
 
-        var option = new Option(puskesmas.nama_puskesmas, puskesmas.id, true, true);
-        $('#puskesmas').append(option).trigger('change');
+    var option = new Option(puskesmas.nama_puskesmas, puskesmas.id, true, true);
+    $('#puskesmas').append(option).trigger('change');
 
 </script>
-    @yield('js')
+@yield('js')
 @stop

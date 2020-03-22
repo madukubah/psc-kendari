@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateAmbulansTable extends Migration
+class UpdateTableKejadian extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class UpdateAmbulansTable extends Migration
      */
     public function up()
     {
-        return;
-        Schema::table('ambulans', function (Blueprint $table) {
-            $table->integer("puskesmas_id")->unsigned();
-
-            $table->foreign("puskesmas_id")->references("id")->on("puskesmas");
+        Schema::table('kejadian', function (Blueprint $table) {
+            $table->double("latitude")->nullable();
+            $table->double("longitude")->nullable();
         });
     }
 
@@ -28,8 +26,8 @@ class UpdateAmbulansTable extends Migration
      */
     public function down()
     {
-        Schema::table('ambulans', function (Blueprint $table) {
-            $table->dropColumn("puskesmas_id");
+        Schema::table('kejadian', function (Blueprint $table) {
+            //
         });
     }
 }

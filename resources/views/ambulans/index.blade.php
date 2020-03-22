@@ -52,7 +52,7 @@
                                     <form onsubmit="return confirm('Anda yakin hapus Ambulans ini?')" action="{{route('ambulans.destroy', ['id' => $ambulan->id ])}}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input type="submit" value="Hapus" class="btn btn-danger btn-sm disabled">
+                                        <input type="submit" value="Hapus" class="btn btn-danger btn-sm ">
                                     </form>
                                 </div>
                             </td>

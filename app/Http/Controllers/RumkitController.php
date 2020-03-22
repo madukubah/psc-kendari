@@ -150,6 +150,10 @@ class RumkitController extends Controller
     {
         //
         $rumkit = \App\Rumkit::findOrFail($id);
+
+        if( count( $rumkit->kejadian ) != 0 )
+            return redirect()->route('driver.index')->with('status', 'Rumah Sakit Gagal dihapus');
+
         $rumkit->delete();
         return redirect()->route('rumkit.index')->with('status', 'Rumah Sakit berhasil dihapus');
     }

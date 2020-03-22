@@ -39,6 +39,7 @@ class AmbulansController extends Controller
     {
         //
         $validationConfig = [
+            'puskesmas' => ['required'],
             'no_plat' => ['required',  'unique:ambulans'],
             'telpon' => ['required'],
         ];
@@ -117,6 +118,10 @@ class AmbulansController extends Controller
     {
         //
         $ambulans = \App\Ambulans::findOrFail($id);
+
+        if( count( $ambulans->kejadian ) != 0 )
+            return redirect()->route('driver.index')->with('status', 'Ambulans Gagal dihapus');
+
         $ambulans->delete();
         return redirect()->route('ambulans.index')->with('status', 'Ambulans Berhasil dihapus.');
 

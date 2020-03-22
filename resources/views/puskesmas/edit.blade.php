@@ -11,7 +11,7 @@
 </style>
 <script>
     function initMap() {
-        var location = {lat: <?= (isset($rumkit->latitude)) ? $rumkit->latitude : -3.981716 ?>, lng: <?= (isset($rumkit->longitude)) ? $rumkit->longitude : 122.518213 ?>};
+        var location = {lat: <?= (isset($puskesmas->latitude)) ? $puskesmas->latitude : -3.981716 ?>, lng: <?= (isset($puskesmas->longitude)) ? $puskesmas->longitude : 122.518213 ?>};
         var marker = new google.maps.Marker({position: location});
         var geocoder = new google.maps.Geocoder;
 

@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Detail Puskesmas')
+@section('title', 'Detail driver')
 
 @section("content")
 
 <div class="row">
     <div class="col-md-8">
 <div class="box box-success">
-    <div class="box-header with-border"><h3 class="box-title">Detail Puskesmas</h3></div>
+    <div class="box-header with-border"><h3 class="box-title">Detail driver</h3></div>
             <div class="box-body">
                         <div class="card">
                             <div class="card-body">
-                                <b>Nama Puskesmas :</b><br/>{{$puskesmas->nama_puskesmas}}<br><br>
-                                <b>No. Telp :</b> <br>{{$puskesmas->telpon}}<br><br>
-                                <b>Alamat :</b> <br>{{$puskesmas->alamat}}<br><br>
-                                <b>Username :</b><br>{{$puskesmas->username}}<br><br>
+                                <b>Nama driver :</b><br/>{{$driver->nama_driver}}<br><br>
+                                <b>No. Telp :</b> <br>{{$driver->telpon}}<br><br>
+                                <b>Alamat :</b> <br>{{$driver->alamat}}<br><br>
+                                <b>Username :</b><br>{{$driver->username}}<br><br>
                             </div>
                         </div>
                     </div>

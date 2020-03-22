@@ -50,7 +50,7 @@
                                         </td>
                                         <td>
                                         <div class="btn-group" style="width: 180px;">
-                                        <a class="btn btn-info btn-sm disabled" href="{{route('driver.show',['id'=>$drivers->id])}}" >Detail</a>
+                                        <a class="btn btn-info btn-sm" href="{{route('driver.show',['id'=>$drivers->id])}}" >Detail</a>
                                         <a class="btn btn-primary btn-sm" href="{{route('driver.edit',['id'=>$drivers->id])}}">Ubah</a>
                                         <form onsubmit="return confirm('Anda yakin hapus Driver ini?')" action="{{route('driver.destroy', ['id' => $drivers->id ])}}" method="POST">
                                             @csrf

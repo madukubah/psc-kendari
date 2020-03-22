@@ -38,6 +38,13 @@ class DriverController extends Controller
     public function store(Request $request)
     {
         //
+        $validationConfig = [
+            'puskesmas' => ['required'],
+            'nama_driver' => ['required'],
+            
+        ];
+        $request->validate( $validationConfig );
+
         $new_driver = new \App\Driver;
 
         $new_driver->nama_driver = $request->get('nama_driver');
@@ -60,7 +67,8 @@ class DriverController extends Controller
      */
     public function show($id)
     {
-        //
+        $driver = \App\Driver::findOrFail($id);
+        return view('driver.show', ['driver' => $driver]);
     }
 
     /**
@@ -85,6 +93,12 @@ class DriverController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validationConfig = [
+            'puskesmas' => ['required'],
+            'nama_driver' => ['required'],
+            
+        ];
+        $request->validate( $validationConfig );
         //
         $drivers = \App\Driver::findOrFail($id);
 
@@ -92,7 +106,10 @@ class DriverController extends Controller
         $drivers->alamat = $request->get('alamat');
         $drivers->telpon = $request->get('telpon');
         $drivers->username = $request->get('username');
-        $drivers->password = \Hash::make($request->get('password'));
+
+        if( $request->input('password') != NULL )
+            $drivers->password = \Hash::make($request->get('password'));
+
         $drivers->email = $request->get('email');
         $drivers->puskesmas()->associate($request->get('puskesmas'));
 
@@ -111,6 +128,10 @@ class DriverController extends Controller
     {
         //
         $drivers = \App\Driver::findOrFail($id);
+        // dd( count( $drivers->kejadian ) );die;
+        if( count( $drivers->kejadian ) != 0 )
+            return redirect()->route('driver.index')->with('status', 'Driver Gagal dihapus');
+
         $drivers->delete();
         return redirect()->route('driver.index')->with('status', 'Driver berhasil dihapus');
     }
