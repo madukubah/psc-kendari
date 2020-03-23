@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     // return view('auth.login');
+//     return view('landing');
+// });
+
+Route::get('/', 'PublicController@index')->name('landing');
+
 
 Auth::routes();
 
