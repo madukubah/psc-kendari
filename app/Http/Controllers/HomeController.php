@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['puskesmas'] = \App\Puskesmas::all();#->pluck( 'id', 'latitude', 'longitude' );
+        return view('home', $data);
     }
 }
