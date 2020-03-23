@@ -144,18 +144,18 @@
 
                     <label for="">Kategori</label>
                     <div class="radio icheck">
-                        <input type="radio" name="kategori[]" id="NONEMERGENCY" value="NONEMERGENCY" checked>
+                        <input type="radio" name="kategori" id="NONEMERGENCY" value="NONEMERGENCY" checked>
                         <label for="NONEMERGENCY">NON EMERGENCY</label>
-                        <input type="radio" name="kategori[]" id="EMERGENCY" value="EMERGENCY">
+                        <input type="radio" name="kategori" id="EMERGENCY" value="EMERGENCY">
                         <label for="EMERGENCY">EMERGENCY</label>
-                        <input type="radio" name="kategori[]" id="INFORMASI" value="INFORMASI">
+                        <input type="radio" name="kategori" id="INFORMASI" value="INFORMASI">
                         <label for="INFORMASI">INFORMASI</label>
-                        <input type="radio" name="kategori[]" id="KRIMINAL" value="KRIMINAL">
+                        <input type="radio" name="kategori" id="KRIMINAL" value="KRIMINAL">
                         <label for="KRIMINAL">KRIMINAL</label>
-                        <input type="radio" name="kategori[]" id="BENCANA" value="BENCANA">
+                        <input type="radio" name="kategori" id="BENCANA" value="BENCANA">
                         <label for="BENCANA">BENCANA</label>
                         <br>
-                        <input type="radio" name="kategori[]" id="LAINNYA" value="LAINNYA">
+                        <input type="radio" name="kategori" id="LAINNYA" value="LAINNYA">
                         <label for="LAINNYA">LAINNYA</label>
                         <br>
                     </div>
