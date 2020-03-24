@@ -25,7 +25,8 @@ class KejadianController extends Controller
      */
     public function create()
     {
-        $data['no_reg'] = \App\Rumkit::all()->last();
+        $data['no_reg'] = \App\Kejadian::latest('id')->first();
+        // var_dump( $data['no_reg'] );die;
         if( $data['no_reg'] == NULL )
             $data['no_reg'] = 'PSCKDI-'.date('Y').'/'.str_pad( '1', 4, '0', STR_PAD_LEFT );
         else
