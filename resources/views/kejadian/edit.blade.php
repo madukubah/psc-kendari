@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit Kejadian')
+@section('title', 'Ubah Kejadian')
 
 @section("content")
 <style>
@@ -45,7 +45,7 @@
 </script>
 <div class="box box-success">
     <div class="box-header with-border">
-        <h3 class="box-title">Tambah Kejadian</h3></div>
+        <h3 class="box-title">Ubah Kejadian</h3></div>
     <div class="box-body">
         @if(session('status'))
         <div class="callout callout-info">{{session('status')}}</div>
@@ -57,7 +57,7 @@
                 <input class="form-control" placeholder="latlong" type="hidden" name="_method" id="latlong" value="PUT" />
                 <div class="col-xs-6">
                     <label for="no_kejadian">No. Register</label>
-                    <input value="{{ $kejadian->no_kejadian }}" class="form-control" placeholder="PSCKDI-YYYY/XXXXX" type="text" name="no_kejadian" id="no_kejadian" />
+                    <input readonly value="{{ $kejadian->no_kejadian }}" class="form-control" placeholder="PSCKDI-YYYY/XXXXX" type="text" name="no_kejadian" id="no_kejadian" />
                     @error('no_kejadian')
                         <span class="text-danger" role="alert">
                             <strong>{{ $message }}</strong>

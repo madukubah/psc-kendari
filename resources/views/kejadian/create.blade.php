@@ -56,7 +56,7 @@
                 @csrf
                 <div class="col-xs-6">
                     <label for="no_kejadian">No. Register</label>
-                    <input value="{{ old('no_kejadian') }}" class="form-control" placeholder="PSCKDI-YYYY/XXXXX" type="text" name="no_kejadian" id="no_kejadian" />
+                    <input readonly value="{{ $no_reg }}" class="form-control" placeholder="PSCKDI-YYYY/XXXXX" type="text" name="no_kejadian" id="no_kejadian" />
                     @error('no_kejadian')
                         <span class="text-danger" role="alert">
                             <strong>{{ $message }}</strong>

@@ -30,6 +30,7 @@ class RumkitController extends Controller
     public function create()
     {
         //
+        
         return view("rumkit.create");
     }
 

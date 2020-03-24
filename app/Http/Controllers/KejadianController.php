@@ -25,8 +25,13 @@ class KejadianController extends Controller
      */
     public function create()
     {
-        //
-        return view("kejadian.create");
+        $data['no_reg'] = \App\Rumkit::all()->last();
+        if( $data['no_reg'] == NULL )
+            $data['no_reg'] = 'PSCKDI-'.date('Y').'/'.str_pad( '1', 4, '0', STR_PAD_LEFT );
+        else
+            $data['no_reg'] = 'PSCKDI-'.date('Y').'/'.str_pad( $data['no_reg']->id+1, 4, '0', STR_PAD_LEFT );
+
+        return view( "kejadian.create", $data );
     }
 
     /**
