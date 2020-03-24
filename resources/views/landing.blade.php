@@ -158,7 +158,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Informasi Rumah Sakit</h3>
                                 </div>
-                                <div class="box-body">
+                                <div class="box-body table-responsive">
                                     <table class="table table-hover">
                                         <tbody>
                                             <thead>
