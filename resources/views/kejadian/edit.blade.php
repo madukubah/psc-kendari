@@ -163,13 +163,13 @@
 
                     <label for="">Triage</label>
                     <div class="radio icheck">
-                        <input type="radio" name="triage" id="M" value="M" >
+                        <input type="radio" name="triage" id="M" value="M" <?= ( $kejadian->triage == 'M' )? 'checked': '' ?> >
                         <label for="M">M</label>
-                        <input type="radio" name="triage" id="K" value="K" checked>
+                        <input type="radio" name="triage" id="K" value="K" <?= ( $kejadian->triage == 'K' )? 'checked': '' ?>>
                         <label for="K">K</label>
-                        <input type="radio" name="triage" id="H" value="H">
+                        <input type="radio" name="triage" id="H" value="H" <?= ( $kejadian->triage == 'H' )? 'checked': '' ?> >
                         <label for="H">H</label>
-                        <input type="radio" name="triage" id="HT" value="HT">
+                        <input type="radio" name="triage" id="HT" value="HT" <?= ( $kejadian->triage == 'HT' )? 'checked': '' ?>>
                         <label for="HT">HT</label>
                         <br>
                     </div>
@@ -321,25 +321,30 @@
         });
     </script>
     <script>
-        var puskesmas = {!! $kejadian->puskesmas !!}
-
-        var option = new Option(puskesmas.nama_puskesmas, puskesmas.id, true, true);
-        $('#puskesmas').append(option).trigger('change');
+        var puskesmas = <?= ( $kejadian->puskesmas != NULL ) ? $kejadian->puskesmas : '"-"' ?>;
+        if( puskesmas != '-')
+        {
+            var option = new Option(puskesmas.nama_puskesmas, puskesmas.id, true, true);
+            $('#puskesmas').append(option).trigger('change');
+        }
 
         var ambulans = {!! $kejadian->ambulans !!}
 
-        var option = new Option(ambulans.no_plat, ambulans.id, true, true);
+        option = new Option(ambulans.no_plat, ambulans.id, true, true);
         $('#ambulans').append(option).trigger('change');
 
         var driver = {!! $kejadian->driver !!}
 
-        var option = new Option(driver.nama_driver, driver.id, true, true);
+         option = new Option(driver.nama_driver, driver.id, true, true);
         $('#driver').append(option).trigger('change');
 
-        var rumkit = {!! $kejadian->rumkit !!}
-
-        var option = new Option(rumkit.nama_rs, rumkit.id, true, true);
-        $('#rumkit').append(option).trigger('change');
+        var rumkit = <?= ( $kejadian->rumkit != NULL ) ? $kejadian->rumkit : '"-"' ?>;
+        if( rumkit != '-')
+        {
+            option = new Option(rumkit.nama_rs, rumkit.id, true, true);
+            $('#rumkit').append(option).trigger('change');
+        }
+        
     </script>
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -36,6 +37,30 @@ class HomeController extends Controller
         $data['kejadian_by_kategori']['BENCANA'] = \App\Kejadian::where('kategori', 'BENCANA')->count();
         $data['kejadian_by_kategori']['LAINNYA'] = \App\Kejadian::where('kategori', 'LAINNYA')->count();
 
+        $kejadian_by_umur  = DB::table('kejadian')->selectRaw("
+            case
+            when umur between  0 and  9 then '0-9'
+            when umur between 10 and 19 then '10-19'
+            when umur between 20 and 29 then '20-29'
+            when umur between 30 and 39 then '30-39'
+            when umur between 40 and 49 then '40-49'
+            else '>= 50'
+            end as _range
+        ");
+
+
+        $data['kejadian_by_umur'] =  DB::table( DB::raw("({$kejadian_by_umur->toSql()}) kejadian ") )
+        ->mergeBindings($kejadian_by_umur )
+        ->selectRaw('   
+            kejadian._range,
+            count(*) as _count
+        ')->orderBy('kejadian._range', 'ASC')->groupBy('kejadian._range')->pluck('_count', '_range');
+
+        $data['kejadian_by_triage'] = \App\Kejadian::
+                                    selectRaw('   
+                                        kejadian.triage,
+                                        count(*) as _count
+                                    ')->groupBy('kejadian.triage')->pluck('_count', 'triage');
         return view('home', $data);
     }
 }

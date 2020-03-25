@@ -43,7 +43,7 @@ class RumkitController extends Controller
     public function store(Request $request)
     {
         $validationConfig = [
-            'username' => ['required', 'string','max:255', 'unique:rumkit'],
+            'username' => ['required', 'string','max:255'],
             'kode_rs' => ['required', 'string','max:255', 'unique:rumkit'],
             'nama_rs' => ['required'],
         ];

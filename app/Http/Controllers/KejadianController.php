@@ -15,6 +15,10 @@ class KejadianController extends Controller
     {
         //
         $kejadian = \App\Kejadian::with('puskesmas','rumkit','driver','ambulans')->paginate(10);
+        $filterKeyword = $request->get('keyword');
+        if($filterKeyword){
+            $kejadian = \App\Kejadian::where('pelapor', 'LIKE', "%$filterKeyword%")->paginate(10);
+        }
         return view('kejadian.index', ['kejadian'=> $kejadian]);
     }
 
@@ -46,21 +50,27 @@ class KejadianController extends Controller
         $validationConfig = [
             'ambulans' => ['required'],
             'driver' => ['required'],
-            'puskesmas' => ['required'],
-            'rumkit' => ['required'],
+            // 'puskesmas' => ['required'],
+            // 'rumkit' => ['required'],
 
             'no_kejadian' => ['required'],
-            'pelapor' => ['required'],
-            'lokasi' => ['required'],
-            'telpon' => ['required'],
-            'nama_korban' => ['required'],
-            'jenis_kelamin' => ['required'],
-            'umur' => ['required'],
-            'kategori' => ['required'],
-            'triage' => ['required'],
-            'triase' => ['required'],
-            'no_jamkes' => ['required'],
+            // 'pelapor' => ['required'],
+            // 'lokasi' => ['required'],
+            // 'telpon' => ['required'],
+            // 'nama_korban' => ['required'],
+            // 'jenis_kelamin' => ['required'],
+            // 'umur' => ['required'],
+            // 'kategori' => ['required'],
+            // 'triage' => ['required'],
+            // 'triase' => ['required'],
+            // 'no_jamkes' => ['required'],
         ];
+
+        if( $request->get('puskesmas') == NULL && $request->get('rumkit') == NULL )
+        {
+            $validationConfig['puskesmas'] = ['required'];
+            $validationConfig['rumkit'] = ['required'];
+        }
         $request->validate( $validationConfig );
         //
         $new_kejadian = new \App\Kejadian();
@@ -128,22 +138,27 @@ class KejadianController extends Controller
         $validationConfig = [
             'ambulans' => ['required'],
             'driver' => ['required'],
-            'puskesmas' => ['required'],
-            'rumkit' => ['required'],
+            // 'puskesmas' => ['required'],
+            // 'rumkit' => ['required'],
 
             'no_kejadian' => ['required'],
-            'pelapor' => ['required'],
-            'lokasi' => ['required'],
-            'telpon' => ['required'],
-            'nama_korban' => ['required'],
-            'jenis_kelamin' => ['required'],
-            'umur' => ['required'],
-            'kategori' => ['required'],
-            'triage' => ['required'],
-            'triase' => ['required'],
-            'no_jamkes' => ['required'],
+            // 'pelapor' => ['required'],
+            // 'lokasi' => ['required'],
+            // 'telpon' => ['required'],
+            // 'nama_korban' => ['required'],
+            // 'jenis_kelamin' => ['required'],
+            // 'umur' => ['required'],
+            // 'kategori' => ['required'],
+            // 'triage' => ['required'],
+            // 'triase' => ['required'],
+            // 'no_jamkes' => ['required'],
 
         ];
+        if( $request->get('puskesmas') == NULL && $request->get('rumkit') == NULL )
+        {
+            $validationConfig['puskesmas'] = ['required'];
+            $validationConfig['rumkit'] = ['required'];
+        }
         $request->validate( $validationConfig );
         //
         $kejadian = \App\Kejadian::findOrFail($id);

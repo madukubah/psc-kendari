@@ -11,7 +11,7 @@
                 <a href="{{route('ambulans.create')}}" class="btn btn-success btn-sm">Tambah Ambulans</a>
                 <br>
                 <div class="box-tools">
-                    <form action="{{route('driver.index')}}">
+                    <form action="{{route('ambulans.index')}}">
                         <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
                             <input type="text" value="{{Request::get('keyword')}}" name="keyword" class="form-control pull-right" placeholder="Filter Ambulans">
 

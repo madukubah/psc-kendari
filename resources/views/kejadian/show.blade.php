@@ -32,8 +32,8 @@
                                         <b>Triase :</b><br>{{$kejadian->triase}}<br><br>
                                         <b>Ambulans :</b><br>{{$kejadian->ambulans->no_plat}}<br><br>
                                         <b>Driver :</b><br>{{$kejadian->driver->nama_driver}}<br><br>
-                                        <b>Puskesmas :</b><br>{{$kejadian->puskesmas->nama_puskesmas}}<br><br>
-                                        <b>Rumah Sakit :</b><br>{{$kejadian->rumkit->nama_rs}}<br><br>
+                                        <b>Puskesmas :</b><br><?= ($kejadian->puskesmas != NULL) ? $kejadian->puskesmas->nama_puskesmas : ''  ?><br><br>
+                                        <b>Rumah Sakit :</b><br><?= ($kejadian->rumkit != NULL) ? $kejadian->rumkit->nama_rs : ''  ?><br><br>
                                     </div>
                                 </div>
                             </div>

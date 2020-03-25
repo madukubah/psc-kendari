@@ -11,10 +11,17 @@ class DriverController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
         //
         $driver = \App\Driver::with('puskesmas')->paginate(10);
+
+        $filterKeyword = $request->get('keyword');
+        if($filterKeyword){
+            $driver = \App\Driver::where('nama_driver', 'LIKE', "%$filterKeyword%")
+                                    ->paginate(10);
+        }
+
         return view('driver.index', ['driver'=> $driver]);
     }
 

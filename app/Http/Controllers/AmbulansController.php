@@ -11,10 +11,16 @@ class AmbulansController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
         //
         $ambulans = \App\Ambulans::with('puskesmas')->paginate(10);
+
+        $filterKeyword = $request->get('keyword');
+        if($filterKeyword){
+            $ambulans = \App\Ambulans::where('no_plat', 'LIKE', "%$filterKeyword%")
+                                        ->paginate(10);
+        }
         return view('ambulans.index', ['ambulans'=> $ambulans]);
     }
 

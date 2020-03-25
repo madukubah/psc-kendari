@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: db_psckendari
 -- ------------------------------------------------------
--- Server version	5.7.29-0ubuntu0.16.04.1
+-- Server version	5.7.29-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -91,26 +91,26 @@ DROP TABLE IF EXISTS `kejadian`;
 CREATE TABLE `kejadian` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `no_kejadian` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pelapor` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lokasi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pelapor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lokasi` text COLLATE utf8mb4_unicode_ci,
   `telpon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nama_korban` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kelamin` enum('PRIA','WANITA') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `umur` int(10) unsigned NOT NULL DEFAULT '0',
-  `jamkes` enum('UMUM') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_jamkes` double(8,2) unsigned NOT NULL DEFAULT '0.00',
+  `nama_korban` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_kelamin` enum('PRIA','WANITA') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `umur` int(10) unsigned DEFAULT NULL,
+  `jamkes` enum('UMUM') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_jamkes` double(8,2) unsigned DEFAULT NULL,
   `kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `triage` enum('M') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `triage` enum('M','K','H','HT') COLLATE utf8mb4_unicode_ci NOT NULL,
   `diagnosa` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kejadian_keluhan` text COLLATE utf8mb4_unicode_ci,
   `catatan` text COLLATE utf8mb4_unicode_ci,
   `triase` enum('1') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `puskesmas_id` int(10) unsigned NOT NULL,
-  `rumkit_id` int(10) unsigned NOT NULL,
-  `ambulans_id` int(10) unsigned NOT NULL,
-  `driver_id` int(10) unsigned NOT NULL,
+  `puskesmas_id` int(10) unsigned DEFAULT NULL,
+  `rumkit_id` int(10) unsigned DEFAULT NULL,
+  `ambulans_id` int(10) unsigned DEFAULT NULL,
+  `driver_id` int(10) unsigned DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -119,7 +119,7 @@ CREATE TABLE `kejadian` (
   KEY `kejadian_rumkit_id_foreign` (`rumkit_id`),
   KEY `kejadian_ambulans_id_foreign` (`ambulans_id`),
   KEY `kejadian_driver_id_foreign` (`driver_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `kejadian` (
 
 LOCK TABLES `kejadian` WRITE;
 /*!40000 ALTER TABLE `kejadian` DISABLE KEYS */;
-INSERT INTO `kejadian` VALUES (3,'1234','4321','Jl. Laode Hadi, Bende, Kec. Kadia, Kota Kendari, Sulawesi Tenggara 93461, Indonesia','1234','4321','PRIA',9,'UMUM',432123.00,'NONEMERGENCY','M','4321','123443','123443','1','2020-03-22 12:52:35','2020-03-22 12:52:35',1,2,5,3,-3.983696217892222,122.52090985188748);
+INSERT INTO `kejadian` VALUES (1,'PSCKDI-2020/0001','adsffd','asdffd',NULL,'asdffdfd','PRIA',12,'UMUM',NULL,'NONEMERGENCY','K','asdf','fdsa','asdffd','1','2020-03-25 05:49:36','2020-03-25 06:20:45',2,NULL,6,4,-3.981716,122.518213),(2,'PSCKDI-2020/0002',NULL,NULL,NULL,NULL,'PRIA',4,'UMUM',NULL,'NONEMERGENCY','M',NULL,NULL,NULL,'1','2020-03-25 08:30:02','2020-03-25 08:39:11',NULL,2,6,4,-3.981716,122.518213);
 /*!40000 ALTER TABLE `kejadian` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +295,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Site Administrator','fachmi.maasy@technoindo.com',NULL,'$2y$10$NdbIjTbZ5L9zBpE2ngqv..dNKQ/S4RDQeyUxKnV1tFof.kWUIG48O','TTkFKIdvXX4eE6QX4bQljaE0zRUO10ShAd7gpFeLdJ7X3yDoaPZaZiJqIqL0','2019-08-18 10:19:01','2019-08-18 10:19:01','administrator','[\"ADMIN\"]','Kota Kendari, Sulawesi Tenggara','082349452345','avatar.png','ACTIVE'),(2,'Dr. Rahminingrum','dr.rahminingrum@gmail.com',NULL,'$2y$10$zbkF6FKVDogPdisbl7ec/.HUbWBYN05IIZKLahGkTCNN7rvD9s9tS',NULL,'2019-08-24 07:38:59','2019-08-24 10:55:39','dr.rahminingrum','[\"STAFF\"]','Kendari Sao-sao','0811999999','avatars/s0TxTzeUs3BlobrTuWkbhkmnXk7zqqDArz2esMKB.png','ACTIVE'),(4,'User Demo','user.demo@gmail.com',NULL,'$2y$10$gzwJnqVcBKt59J2T3wlTWeC5aLtg6D/feTvzHno6ZdfknSxUAAO0C',NULL,'2019-08-25 00:55:54','2019-08-25 00:56:09','user.demo','[\"OPERATOR\"]','Kendari','0811111111','avatars/0yNLDMYRsNAxZlMsi8YG6kq0n1TUiWsppuCtbGou.png','INACTIVE'),(5,'Arpan Tombili','arpan.tombili@mail.com',NULL,'$2y$10$wi.9fQE5qP1.aQJRCOgJTe3R6R.Do//0F.7SfHJWhzqJ6ycXRzHVy',NULL,'2019-08-25 01:04:54','2019-08-25 01:05:07','arpan.tombili','[\"STAFF\"]','Kendari','08999977','avatars/FK2PqbAEoHUKFdzNfDiLjNit00Vkhw5UzQfYf6Y1.png','INACTIVE'),(6,'Dian Saputra','qoraolivera@gmail.com',NULL,'$2y$10$Tq6dz1V0TEYT8vo4xCHRn.tvwZ0ZKsNR0c5MR5cb49oz7HjyvmhIG',NULL,'2019-08-27 04:51:01','2019-08-27 04:51:01','dian.saputra','[\"OPERATOR\"]','Kendari','081341808045','avatars/kJOnM348oiiQmJcLyuE7z2GLFnjIhuo2EaRJ5Osx.png','ACTIVE');
+INSERT INTO `users` VALUES (1,'Site Administrator','fachmi.maasy@technoindo.com',NULL,'$2y$10$NdbIjTbZ5L9zBpE2ngqv..dNKQ/S4RDQeyUxKnV1tFof.kWUIG48O','qucvhN9l9rlD2uhGNjc5sTcJfEqbBtogQevLKZkGTXYlMGGvN3cIv6S04a21','2019-08-18 10:19:01','2019-08-18 10:19:01','administrator','[\"ADMIN\"]','Kota Kendari, Sulawesi Tenggara','082349452345','avatar.png','ACTIVE'),(2,'Dr. Rahminingrum','dr.rahminingrum@gmail.com',NULL,'$2y$10$zbkF6FKVDogPdisbl7ec/.HUbWBYN05IIZKLahGkTCNN7rvD9s9tS',NULL,'2019-08-24 07:38:59','2019-08-24 10:55:39','dr.rahminingrum','[\"STAFF\"]','Kendari Sao-sao','0811999999','avatars/s0TxTzeUs3BlobrTuWkbhkmnXk7zqqDArz2esMKB.png','ACTIVE'),(4,'User Demo','user.demo@gmail.com',NULL,'$2y$10$gzwJnqVcBKt59J2T3wlTWeC5aLtg6D/feTvzHno6ZdfknSxUAAO0C',NULL,'2019-08-25 00:55:54','2019-08-25 00:56:09','user.demo','[\"OPERATOR\"]','Kendari','0811111111','avatars/0yNLDMYRsNAxZlMsi8YG6kq0n1TUiWsppuCtbGou.png','INACTIVE'),(5,'Arpan Tombili','arpan.tombili@mail.com',NULL,'$2y$10$wi.9fQE5qP1.aQJRCOgJTe3R6R.Do//0F.7SfHJWhzqJ6ycXRzHVy',NULL,'2019-08-25 01:04:54','2019-08-25 01:05:07','arpan.tombili','[\"STAFF\"]','Kendari','08999977','avatars/FK2PqbAEoHUKFdzNfDiLjNit00Vkhw5UzQfYf6Y1.png','INACTIVE'),(6,'Dian Saputra','qoraolivera@gmail.com',NULL,'$2y$10$Tq6dz1V0TEYT8vo4xCHRn.tvwZ0ZKsNR0c5MR5cb49oz7HjyvmhIG',NULL,'2019-08-27 04:51:01','2019-08-27 04:51:01','dian.saputra','[\"OPERATOR\"]','Kendari','081341808045','avatars/kJOnM348oiiQmJcLyuE7z2GLFnjIhuo2EaRJ5Osx.png','ACTIVE');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -308,4 +308,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-23 12:49:28
+-- Dump completed on 2020-03-25 17:00:50
