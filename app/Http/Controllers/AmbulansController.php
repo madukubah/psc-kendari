@@ -48,6 +48,7 @@ class AmbulansController extends Controller
             'puskesmas' => ['required'],
             'no_plat' => ['required',  'unique:ambulans'],
             'telpon' => ['required'],
+            'kelengkapan' => ['required'],
         ];
         $request->validate( $validationConfig );
 
@@ -100,11 +101,13 @@ class AmbulansController extends Controller
         $validationConfig = [
             'no_plat' => ['required'],
             'telpon' => ['required'],
+            'kelengkapan' => ['required'],
+
         ];
         $request->validate( $validationConfig );
 
         $ambulans = \App\Ambulans::findOrFail($id);
-        
+
         $ambulans->no_plat = $request->get('no_plat');
         $ambulans->telpon = $request->get('telpon');
         $ambulans->kelengkapan = $request->get('kelengkapan');

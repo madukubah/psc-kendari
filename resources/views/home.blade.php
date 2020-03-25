@@ -150,7 +150,7 @@
           <!-- DONUT CHART -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Berdasarkan Umur</h3>
+              <h3 class="box-title">Berdasarkan Triage</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -198,7 +198,7 @@
     <script src="{{ asset('vendor/adminlte/bower_components/chart.js/Chart.js') }}"></script>
     <script>
         $(function () {
-           
+
                 //-------------
                 //- PIE CHART -
                 //-------------
