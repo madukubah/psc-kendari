@@ -20,3 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/', function () {
     echo 'aa';
 });
+
+Route::get('/ambulans', 'API\AmbulansController@index')->name('ambulans');
+Route::get('/puskesmas', 'API\PuskesmasController@index')->name('puskesmas');
+Route::get('/rumkit', 'API\RumkitController@index')->name('rumkit');
+Route::get('/kejadian', 'API\KejadianController@index')->name('kejadian');
+
