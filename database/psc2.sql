@@ -228,8 +228,8 @@ CREATE TABLE `rumkit` (
   `nama_rs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `telpon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tt_kelas_vip` int(11) DEFAULT NULL,
   `tt_kelas_1` int(11) DEFAULT NULL,
   `tt_kelas_2` int(11) DEFAULT NULL,
@@ -246,8 +246,7 @@ CREATE TABLE `rumkit` (
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `rumkit_kode_rs_unique` (`kode_rs`),
-  UNIQUE KEY `rumkit_username_unique` (`username`)
+  UNIQUE KEY `rumkit_kode_rs_unique` (`kode_rs`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -257,7 +256,7 @@ CREATE TABLE `rumkit` (
 
 LOCK TABLES `rumkit` WRITE;
 /*!40000 ALTER TABLE `rumkit` DISABLE KEYS */;
-INSERT INTO `rumkit` VALUES (1,'RSUKK','RSU Kota Kendari','Jl. Buburanda, Kambu, Kec. Kambu, Kota Kendari, Sulawesi Tenggara 93231, Indonesia','(0401) 3359171','rsukk','$2y$10$lCkt6upWswbpz1ABNr52KOS.uzXIBK9AZ1PTD8.AzYWQyNbD1dxQe',6,0,0,0,1,1,1,0,0,0,'2020-03-21 15:15:57','2019-08-26 01:06:00','2020-03-21 15:15:57',-3.981716,122.518213),(2,'RSUDB','RSUD Bahteramas','Jl. Poros Bandara Haluoleo, Baruga, Kota Kendari, Sulawesi Tenggara 93116, Indonesia','(0401) 3195611','rsudb','$2y$10$Sngf0CNiRQCyPwYZUPLmyeGZb3Uh2p9CTStuVfZ44mIOWcQqA4JY2',5,0,0,0,1,1,1,0,0,0,NULL,'2019-08-26 01:52:05','2020-03-21 11:46:55',-3.981716,122.518213),(3,'1234','asdf','Jl. Laode Hadi, Bende, Kec. Kadia, Kota Kendari, Sulawesi Tenggara 93561, Indonesia','4321','fachmi.maasy@technoindo.com','$2y$10$W7b6Hh8A8CCpDY4qecZsL.DTRn2404oIxMjFuuJ3NZ5jxKfAG/d1O',0,0,2,0,0,0,0,0,0,0,'2020-03-21 03:25:18','2020-03-21 02:37:03','2020-03-21 03:25:18',-3.9858866079096944,122.51982761383059);
+INSERT INTO `rumkit` VALUES (1,'RSUKK','RSU Kota Kendari','Jl. Buburanda, Kambu, Kec. Kambu, Kota Kendari, Sulawesi Tenggara 93231, Indonesia','(0401) 3359171','','$2y$10$lCkt6upWswbpz1ABNr52KOS.uzXIBK9AZ1PTD8.AzYWQyNbD1dxQe',6,0,0,0,1,1,1,0,0,0,'2020-03-21 15:15:57','2019-08-26 01:06:00','2020-03-21 15:15:57',-3.981716,122.518213),(2,'RSUDB','RSUD Bahteramas','Jl. Poros Bandara Haluoleo, Baruga, Kota Kendari, Sulawesi Tenggara 93116, Indonesia','(0401) 3195611','','$2y$10$Sngf0CNiRQCyPwYZUPLmyeGZb3Uh2p9CTStuVfZ44mIOWcQqA4JY2',5,0,0,0,1,1,1,0,0,0,NULL,'2019-08-26 01:52:05','2020-03-21 11:46:55',-3.981716,122.518213),(3,'1234','asdf','Jl. Laode Hadi, Bende, Kec. Kadia, Kota Kendari, Sulawesi Tenggara 93561, Indonesia','4321','','$2y$10$W7b6Hh8A8CCpDY4qecZsL.DTRn2404oIxMjFuuJ3NZ5jxKfAG/d1O',0,0,2,0,0,0,0,0,0,0,'2020-03-21 03:25:18','2020-03-21 02:37:03','2020-03-21 03:25:18',-3.9858866079096944,122.51982761383059);
 /*!40000 ALTER TABLE `rumkit` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,4 +307,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-25 17:00:50
+-- Dump completed on 2020-03-25 17:10:44
