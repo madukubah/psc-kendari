@@ -104,11 +104,11 @@
                 }
                 // MAP AMBULANCE
                 var location_2 = {
-                    lat: -3.981716,
-                    lng: 122.518213
+                    lat: -3.989686326603322,
+                    lng: 122.5344761309048
                 };
                 var map_2 = new google.maps.Map(document.getElementById('map_ambulance'), {
-                    zoom: 12,
+                    zoom: 17,
                     center: location_2
                 });
             }
@@ -146,7 +146,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <!-- <h1>
-            Informasi Puskesmas Dan Rumah Sakit 
+            Informasi Puskesmas Dan Rumah Sakit
         </h1> -->
                 </section>
 
@@ -177,7 +177,7 @@
                                                     <th><b>NICU</b></th>
                                                 </tr>
                                             </thead>
-                                            @foreach($rumkit as $ind => $rs)
+                                            @foreach($_rumkit as $ind => $rs)
                                             <tr>
                                               <td>{{$ind+1}}</td>
                                               <td>
@@ -196,9 +196,14 @@
                                               <td>{{$rs->nicu}}</td>
                                             </tr>
                                             @endforeach
-                                            
+
                                         </tbody>
                                         <tfoot>
+                                            <tr>
+                                                <td colspan=10>
+                                                    {{$_rumkit->appends(Request::all())->links()}}
+                                                </td>
+                                            </tr>
                                         </tfoot>
                                     </table>
                                 </div>

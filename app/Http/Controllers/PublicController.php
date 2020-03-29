@@ -15,6 +15,7 @@ class PublicController extends Controller
     {
         $data['puskesmas'] = \App\Puskesmas::all();#->pluck( 'id', 'latitude', 'longitude' );
         $data['rumkit'] = \App\Rumkit::all();#->pluck( 'id', 'latitude', 'longitude' );
+        $data['_rumkit'] = \App\Rumkit::paginate(5);
         return view('landing', $data);
     }
 
